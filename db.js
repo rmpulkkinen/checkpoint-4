@@ -3,7 +3,9 @@ const { Pool } = require("pg");
 const pool = new Pool();
 
 async function readAllTableware() {
-  const res = await pool.query("SELECT * FROM Tableware");
+  const res = await pool.query(
+    "SELECT tableware.name name, tableware.qty qty, office.location location FROM tableware INNER JOIN office ON office_id = office.id "
+  );
   return res.rows;
 }
 
