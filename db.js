@@ -14,7 +14,20 @@ async function createTableware(name, qty) {
   ]);
 }
 
+async function updateTableware(id, name, qty, office_id) {
+  await pool.query(
+    "UPDATE Tableware SET name = $2, qty = $3, office_id = $4 WHERE id = $1;",
+    [id, name, qty, office_id]
+  );
+}
+
+async function deleteTableware(id) {
+  await pool.query("DELETE FROM Tableware WHERE id = $1;", [id]);
+}
+
 module.exports = {
   readAllTableware,
   createTableware,
+  updateTableware,
+  deleteTableware,
 };

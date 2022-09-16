@@ -1,4 +1,9 @@
-const { readAllTableware, createTableware } = require("./db");
+const {
+  readAllTableware,
+  createTableware,
+  updateTableware,
+  deleteTableware,
+} = require("./db");
 
 async function read() {
   const result = await readAllTableware();
